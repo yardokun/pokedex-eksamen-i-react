@@ -1,0 +1,36 @@
+@font-face {
+  font-family: "PocketMonk";
+  src: url("../assets/fonts/PocketMonk-15ze.woff2") format("woff2");
+}
+@font-face {
+  font-family: "PokemonFont-Solid";
+  src: url("../assets/fonts/Pokemon\ Solid.woff2") format("woff2");
+}
+@font-face {
+  font-family: "PokemonFont-Hollow";
+  src: url("../assets/fonts/Pokemon\ Hollow.woff2") format("woff2");
+}
+
+:root {
+  /* Colors */
+  --color-primary: #08274a;
+  --color-secondary: #fec700;
+  --color-tertiary: #000000;
+  --color-quaternary: #f0f5f5;
+  --color-quinary: #f1b1b1;
+  --color-dropdown: #f0e5d8;
+
+  /* Fonts */
+  --font-primary: "JetBrainsMono-ExtraBold", sans-serif;
+  --font-secondary: "JockeyOne-Regular", sans-serif;
+
+  /* Sizes */
+  --header-mobile-height: 5rem;
+  --header-tablet-height: 6rem;
+
+  --buttons-mobile-width: 9rem;
+  --buttons-tablet-width: 9rem;
+
+  --inputs-mobile-width: 10rem;
+  --inputs-tablet-width: 10rem;
+}
