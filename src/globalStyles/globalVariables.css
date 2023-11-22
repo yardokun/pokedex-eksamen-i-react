@@ -10,6 +10,10 @@
   font-family: "PokemonFont-Hollow";
   src: url("../assets/fonts/Pokemon\ Hollow.woff2") format("woff2");
 }
+@font-face {
+  font-family: "Silom";
+  src: url("../assets/fonts/Silom.woff2") format("woff2");
+}
 
 :root {
   /* Colors */

@@ -1,14 +1,16 @@
 import { RouterProvider, createBrowserRouter, Outlet } from "react-router-dom";
 import Home from "../pages/home/home.page";
-import Pokemon from "../pages/pokemon/pokemon.page";
-import Header from "../components/header/header.component";
+import AllPokemon from "../pages/allPokemon/allPokemon.page.jsx";
+import AddPokemon from "../pages/addPokemon/addPokemon.page.jsx";
+import MyFavorites from "../pages/myFavorites/myFavorites.page.jsx";
+import Logo from "../components/logo/logo.component.jsx";
 import { routes } from "./endpoints";
 
 export default function Routing() {
   function BasicLayout() {
     return (
       <>
-        <Header />
+        <Logo />
         <Outlet />
       </>
     );
@@ -23,8 +25,16 @@ export default function Routing() {
           element: <Home />,
         },
         {
-          path: `${routes.pokemon}`,
-          element: <Pokemon />,
+          path: `${routes.allPokemon}`,
+          element: <AllPokemon />,
+        },
+        {
+          path: `${routes.addPokemon}`,
+          element: <AddPokemon />,
+        },
+        {
+          path: `${routes.myFavorites}`,
+          element: <MyFavorites />,
         },
       ],
     },
