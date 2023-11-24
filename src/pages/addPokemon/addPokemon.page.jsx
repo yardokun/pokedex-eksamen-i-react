@@ -17,9 +17,9 @@ export default function AddPokemon() {
         <button className="add-pokemon-btn">Legg til</button>
       </form>
       <div className="icon-links-container">
-        <IconLink icon="allPokemon" size="40" />
-        <IconLink icon="addPokemon" size="40" />
-        <IconLink icon="myFavorites" size="40" />
+        <IconLink icon="allPokemon" size="60" />
+        <IconLink icon="addPokemon" size="60" />
+        <IconLink icon="myFavorites" size="70" />
       </div>
     </PageContainer>
   );

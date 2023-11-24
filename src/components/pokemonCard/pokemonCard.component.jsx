@@ -5,8 +5,8 @@ import wartortleIcon from "../../assets/graphics/wartortle.png";
 import eeveeIcon from "../../assets/graphics/eevee.png";
 import pikachuIcon from "../../assets/graphics/pikachu.png";
 import butterfreeIcon from "../../assets/graphics/butterfree.png";
-import favedIcon from "../../assets/graphics/myFavoritesIcon.png";
-import unfavedIcon from "../../assets/graphics/myFavoritesIconBlackWhite.png";
+import favedIcon from "../../assets/graphics/pokemonFavorite.png";
+import unfavedIcon from "../../assets/graphics/pokemonFavoriteBlackWhite .png";
 
 export default function PokemonCard({
   icon,
@@ -18,13 +18,13 @@ export default function PokemonCard({
   toggleFavorite,
 }) {
   function choosePokemonIcon() {
-    if (icon === "bulbasaur") {
+    if (icon === "Bulbasaur") {
       return bulbasaurIcon;
-    } else if (icon === "charizard") return charizardIcon;
-    else if (icon === "wartortle") return wartortleIcon;
-    else if (icon === "eevee") return eeveeIcon;
-    else if (icon === "pikachu") return pikachuIcon;
-    else if (icon === "butterfree") return butterfreeIcon;
+    } else if (icon === "Charizard") return charizardIcon;
+    else if (icon === "Wartortle") return wartortleIcon;
+    else if (icon === "Eevee") return eeveeIcon;
+    else if (icon === "Pikachu") return pikachuIcon;
+    else if (icon === "Butterfree") return butterfreeIcon;
   }
 
   function getFavoriteIcon() {
@@ -40,7 +40,7 @@ export default function PokemonCard({
         <p className="text">Trener: {trainer}</p>
         <img
           src={getFavoriteIcon()}
-          width="20"
+          width="50"
           alt={favIcon}
           onClick={toggleFavorite}
         />

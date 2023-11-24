@@ -4,6 +4,21 @@
   position: fixed;
   bottom: 0;
   width: 100%;
-  gap: 90px;
+  gap: 5.625rem;
   margin-bottom: 14px;
+}
+
+.error-message {
+  color: red;
+  text-align: center;
+  margin-top: 1.25rem;
+  font-family: var(--font-primary);
+  font-size: 0.938rem;
+}
+
+.no-data-message {
+  text-align: center;
+  margin-top: 1.25rem;
+  font-family: var(--font-primary);
+  font-size: 0.938rem;
 }

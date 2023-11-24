@@ -1,9 +1,10 @@
-export const path = "https://crudcrud.com/api/f0e5b0fdbaa94087b0f52b894f543f0f";
+export const path = "https://crudcrud.com/api/3e755ceaccfd48969ce7d8c80c597422";
 
 export const routes = {
   allPokemon: "/allPokemon",
   addPokemon: "/addPokemon",
   myFavorites: "/myFavorites",
+  getPokemon: "/pokemon",
 };
 
 /* export const endpoints = {
