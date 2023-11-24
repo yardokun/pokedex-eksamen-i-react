@@ -1,9 +1,9 @@
 import "./selectTrainer.styles.css";
 
-export default function SelectTrainer({ value, onChange, name }) {
+export default function SelectTrainer({ value, onChange }) {
   return (
     <div className="select-container">
-      <select className="selecter">
+      <select className="selecter" value={value} onChange={onChange}>
         <option value="0">Velg trener:</option>
         <option value="1">Ash Ketchum</option>
         <option value="2">Gary Oak</option>

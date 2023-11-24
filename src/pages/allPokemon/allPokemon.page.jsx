@@ -28,7 +28,7 @@ export default function AllPokemon() {
       })
       .catch((error) => {
         console.error("Error:", error);
-        setError("Kunne ikke laste Pokémon-data. Prøv igjen senere.");
+        setError("Kunne ikke laste Pokémon-data.");
       });
   }, []);
 

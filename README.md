@@ -13,3 +13,9 @@ const hello = "world";
 ```bash
 npm install
 ```
+
+Kom med forslag til pokémon info som kan legges inn
+
+Legg ved bilder av alle pokémon
+
+Legg ved bilder av ikoner jeg har laget med DALL.E
