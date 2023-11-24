@@ -3,14 +3,16 @@ import Home from "../pages/home/home.page";
 import AllPokemon from "../pages/allPokemon/allPokemon.page.jsx";
 import AddPokemon from "../pages/addPokemon/addPokemon.page.jsx";
 import MyFavorites from "../pages/myFavorites/myFavorites.page.jsx";
-import Logo from "../components/logo/logo.component.jsx";
+import BigLogo from "../components/bigLogo/bigLogo.component.jsx";
+import Searchbar from "../components/searchbar/searchbar.component.jsx";
 import { routes } from "./endpoints";
 
 export default function Routing() {
   function BasicLayout() {
     return (
       <>
-        <Logo />
+        <BigLogo />
+        <Searchbar />
         <Outlet />
       </>
     );

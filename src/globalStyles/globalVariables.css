@@ -1,4 +1,8 @@
 @font-face {
+  font-family: "Silom";
+  src: url("../assets/fonts/Silom.woff2") format("woff2");
+}
+/* @font-face {
   font-family: "PocketMonk";
   src: url("../assets/fonts/PocketMonk-15ze.woff2") format("woff2");
 }
@@ -9,24 +13,21 @@
 @font-face {
   font-family: "PokemonFont-Hollow";
   src: url("../assets/fonts/Pokemon\ Hollow.woff2") format("woff2");
-}
-@font-face {
-  font-family: "Silom";
-  src: url("../assets/fonts/Silom.woff2") format("woff2");
-}
+} */
 
 :root {
   /* Colors */
-  --color-primary: #08274a;
-  --color-secondary: #fec700;
-  --color-tertiary: #000000;
-  --color-quaternary: #f0f5f5;
-  --color-quinary: #f1b1b1;
-  --color-dropdown: #f0e5d8;
+  --color-primary: #1d2c5e;
+  --color-secondary: #ffffff;
+  --color-tertiary: #f0f0f0;
+  --color-quaternary: #e3e3e3;
+
+  /*   --color-quinary: #f1b1b1;
+  --color-dropdown: #f0e5d8; */
 
   /* Fonts */
-  --font-primary: "JetBrainsMono-ExtraBold", sans-serif;
-  --font-secondary: "JockeyOne-Regular", sans-serif;
+  --font-primary: "Silom", sans-serif;
+/*   --font-secondary: "JockeyOne-Regular", sans-serif; */
 
   /* Sizes */
   --header-mobile-height: 5rem;

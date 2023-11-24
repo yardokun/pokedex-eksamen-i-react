@@ -1,5 +1,5 @@
-import "./globalStyles/globalVariables.css";
 import "./globalStyles/reset.css";
+import "./globalStyles/globalVariables.css";
 import Routing from "./routing/routing.component";
 
 function App() {

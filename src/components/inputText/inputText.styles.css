@@ -1,0 +1,13 @@
+.inputText {
+  font-family: var(--font-primary);
+  color: var(--color-primary);
+  border: 0.1rem solid var(--color-primary);
+  padding: 0.5rem;
+  margin: 0.625rem;
+  display: flex;
+}
+
+input::placeholder {
+  color: var(--color-primary);
+  opacity: 0.75;
+}

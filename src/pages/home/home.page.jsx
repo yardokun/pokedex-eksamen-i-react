@@ -11,14 +11,15 @@ export default function Home() {
 }
  */
 
-import React, { useEffect, useState } from "react";
+/* import React, { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
-import { routes, path } from "../../routing/endpoints";
+import { routes, path } from "../../routing/endpoints"; */
+import IconLink from "../../components/iconLink/iconLink.component";
 
 export default function Home() {
-  const [pokemon, setPokemon] = useState([]);
+/*   const [pokemon, setPokemon] = useState([]); */
 
-  useEffect(() => {
+/*   useEffect(() => {
     fetch(`${path}${routes.pokemon}`)
       .then((response) => response.json())
       .then((data) => {
@@ -26,18 +27,21 @@ export default function Home() {
         setPokemon(data);
       })
       .catch((error) => console.error("Error:", error));
-  }, []);
+  }, []); */
 
   return (
     <div>
-      <p>
+   {/*    <p>
         <Link to={`${routes.pokemon}`}>Go to Pokemon</Link>
       </p>
       <ul>
         {pokemon.map((poke) => (
           <li key={poke._id}>{poke.name}</li>
         ))}
-      </ul>
+      </ul> */}
+      <IconLink icon="allPokemon" text="Alle Pokémon" />
+      <IconLink icon="addPokemon" text="Legg til Pokémon" />
+      <IconLink icon="myFavorites" text="Mine favoritter" />
     </div>
   );
 }

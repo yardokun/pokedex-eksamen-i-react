@@ -1,0 +1,19 @@
+.add-pokemon-btn {
+  color: var(--color-primary);
+  font-family: var(--font-primary);
+  background-color: var(--color-tertiary);
+  border: 0.1rem solid var(--color-primary);
+  border-radius: 0.625rem;
+  font-size: 0.813rem;
+  padding: 0.313rem 1.875rem;
+}
+
+.icon-links-container {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  gap: 90px;
+  margin-bottom: 14px;
+}

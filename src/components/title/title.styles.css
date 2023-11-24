@@ -1,0 +1,5 @@
+.title-text {
+  color: var(--color-primary);
+  font-family: var(--font-primary);
+  font-size: 1.25rem;
+}

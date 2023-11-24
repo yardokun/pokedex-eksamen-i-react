@@ -1,0 +1,9 @@
+.icon-links-container {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  bottom: 0;
+  width: 100%;
+  gap: 90px;
+  margin-bottom: 14px;
+}
