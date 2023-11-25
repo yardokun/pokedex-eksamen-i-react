@@ -1,16 +1,16 @@
+import { useState, useEffect } from "react";
+import { useFavorites } from "../../hooks/useFavorites";
 import PageContainer from "../../components/pageContainer/pageContainer";
 import PokemonCard from "../../components/pokemonCard/pokemonCard.component";
-import { useState } from "react";
 import Title from "../../components/title/title.component";
 import IconLink from "../../components/iconLink/iconLink.component";
 import { path, routes } from "../../routing/endpoints";
-import { useEffect } from "react";
 import "./allPokemon.styles.css";
 
 export default function AllPokemon() {
-  const [favorites, setFavorites] = useState({});
   const [pokemonList, setPokemonList] = useState([]);
   const [error, setError] = useState(null);
+  const { favorites, toggleFavorite } = useFavorites();
 
   useEffect(() => {
     const url = `${path}${routes.getPokemon}`;
@@ -32,19 +32,24 @@ export default function AllPokemon() {
       });
   }, []);
 
-  const toggleFavorite = (pokemonName) => {
-    setFavorites((prevFavorites) => {
-      const newFavorites = { ...prevFavorites };
-      if (newFavorites[pokemonName]) {
-        delete newFavorites[pokemonName];
-      } else {
-        newFavorites[pokemonName] = true;
-      }
-      return newFavorites;
-    });
-  };
+  const deletePokemon = (pokemonId) => {
+    const url = `${path}/pokemon/${pokemonId}`;
 
-  console.log("Pokemon List:", pokemonList);
+    fetch(url, {
+      method: "DELETE",
+    })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        setPokemonList(
+          pokemonList.filter((pokemon) => pokemon._id !== pokemonId)
+        );
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
 
   return (
     <PageContainer>
@@ -65,8 +70,10 @@ export default function AllPokemon() {
           type={pokemon.type}
           level={pokemon.nivå}
           trainer={pokemon.trener}
-          favIcon={favorites[pokemon.name] ? "faved" : "unfaved"}
-          toggleFavorite={() => toggleFavorite(pokemon.name)}
+          pokemon={pokemon}
+          favIcon={favorites[pokemon.navn] ? "faved" : "unfaved"}
+          onToggleFavorite={() => toggleFavorite(pokemon)}
+          onDelete={deletePokemon}
         />
       ))}
       <div className="icon-links-container">

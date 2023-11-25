@@ -7,3 +7,11 @@
   gap: 90px;
   margin-bottom: 14px;
 }
+
+.feedback-message {
+  text-align: center;
+  margin-top: 1.25rem;
+  font-family: var(--font-primary);
+  font-size: 0.938rem;
+  color: var(--color-primary);
+}

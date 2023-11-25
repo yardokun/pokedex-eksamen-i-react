@@ -14,8 +14,10 @@ export default function PokemonCard({
   type,
   level,
   trainer,
+  pokemon,
   favIcon,
-  toggleFavorite,
+  onToggleFavorite,
+  onDelete,
 }) {
   function choosePokemonIcon() {
     if (icon === "Bulbasaur") {
@@ -27,9 +29,6 @@ export default function PokemonCard({
     else if (icon === "Butterfree") return butterfreeIcon;
   }
 
-  function getFavoriteIcon() {
-    return favIcon === "faved" ? favedIcon : unfavedIcon;
-  }
   return (
     <div className="pokemon-card-container">
       {<img src={choosePokemonIcon()} width="80" alt={icon} />}
@@ -39,11 +38,12 @@ export default function PokemonCard({
         <p className="text">Nivå: {level}</p>
         <p className="text">Trener: {trainer}</p>
         <img
-          src={getFavoriteIcon()}
+          src={favIcon === "faved" ? favedIcon : unfavedIcon}
           width="50"
-          alt={favIcon}
-          onClick={toggleFavorite}
+          alt="Favorite Icon"
+          onClick={() => onToggleFavorite(name)}
         />
+        <button onClick={() => onDelete(pokemon._id)}>Slett</button>
       </div>
     </div>
   );
