@@ -4,7 +4,6 @@ import AllPokemon from "../pages/allPokemon/allPokemon.page.jsx";
 import AddPokemon from "../pages/addPokemon/addPokemon.page.jsx";
 import MyFavorites from "../pages/myFavorites/myFavorites.page.jsx";
 import BigLogo from "../components/bigLogo/bigLogo.component.jsx";
-import Searchbar from "../components/searchbar/searchbar.component.jsx";
 import { routes } from "./endpoints";
 
 export default function Routing() {
@@ -12,7 +11,6 @@ export default function Routing() {
     return (
       <>
         <BigLogo />
-        <Searchbar />
         <Outlet />
       </>
     );

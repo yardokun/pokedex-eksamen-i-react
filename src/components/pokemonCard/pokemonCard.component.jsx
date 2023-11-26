@@ -43,7 +43,7 @@ export default function PokemonCard({
           alt="Favorite Icon"
           onClick={() => onToggleFavorite(name)}
         />
-        <button onClick={() => onDelete(pokemon._id)}>Slett</button>
+        <button className="delete-pokemon-btn" onClick={() => onDelete(pokemon._id)}>Slett</button>
       </div>
     </div>
   );
