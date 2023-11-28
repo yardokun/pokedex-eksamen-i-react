@@ -6,37 +6,35 @@ export const TrainersContext = createContext();
 export const TrainersProvider = ({ children }) => {
   const [trainers, setTrainers] = useState([]);
 
-  const fetchTrainers = async () => {
-    try {
-      const response = await fetch(`${path}/trainers`);
-      const data = await response.json();
-      setTrainers(data);
-    } catch (error) {
-      console.error("Error fetching trainers:", error);
-    }
-  };
-
   useEffect(() => {
-    const createTrainers = async () => {
-      const trainersToCreate = [{ navn: "Ash Ketchum" }, { navn: "Gary Oak" }];
+    const fetchAndCreateTrainers = async () => {
+      const response = await fetch(`${path}/trainers`);
+      const existingTrainers = await response.json();
+
+      const trainersToCreate = [
+        { navn: "Ash Ketchum" },
+        { navn: "Gary Oak" },
+      ].filter(
+        (trainerToCreate) =>
+          !existingTrainers.some(
+            (trainer) => trainer.navn === trainerToCreate.navn
+          )
+      );
 
       for (const trainer of trainersToCreate) {
         try {
           await fetch(`${path}/trainers`, {
             method: "POST",
-            headers: {
-              "Content-Type": "application/json",
-            },
+            headers: { "Content-Type": "application/json" },
             body: JSON.stringify(trainer),
           });
         } catch (error) {
           console.error("Error creating trainer:", error);
         }
       }
-
-      fetchTrainers();
+      setTrainers([...existingTrainers, ...trainersToCreate]);
     };
-    createTrainers();
+    fetchAndCreateTrainers();
   }, []);
 
   return (

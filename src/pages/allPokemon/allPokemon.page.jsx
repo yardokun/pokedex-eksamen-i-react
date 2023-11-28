@@ -15,6 +15,7 @@ export default function AllPokemon() {
   const [error, setError] = useState(null);
   const { favorites, toggleFavorite, removeFavorite } = useFavorites();
   const [editingPokemon, setEditingPokemon] = useState(null);
+  const [isInitialized, setIsInitialized] = useState(false);
 
   const initPokemons = [
     {
@@ -74,40 +75,52 @@ export default function AllPokemon() {
   ];
 
   useEffect(() => {
-    const url = `${path}${routes.getPokemon}`;
+    const fetchPokemons = async () => {
+      console.log("Starter å hente Pokémon data...");
 
-    fetch(url)
-      .then((response) => {
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-        return response.json();
-      })
-      .then((data) => {
-        if (data.length === 0) {
-          const pokemonPromises = initPokemons.map((pokemon) =>
-            fetch(`${path}/pokemon`, {
+      try {
+        const response = await fetch(`${path}${routes.getPokemon}`);
+        let existingPokemons = await response.json();
+
+        console.log("Mottok eksisterende Pokémon data:", existingPokemons);
+
+        if (existingPokemons.length === 0 && !isInitialized) {
+          console.log("Legger til initielle Pokémon...");
+
+          for (const pokemon of initPokemons) {
+            await fetch(`${path}/pokemon`, {
               method: "POST",
               headers: {
                 "Content-Type": "application/json",
               },
               body: JSON.stringify(pokemon),
-            }).then((res) => res.json())
-          );
+            });
+          }
 
-          return Promise.all(pokemonPromises);
-        } else {
-          return data;
+          console.log("Initielle Pokémon lagt til.");
+
+          setIsInitialized(true);
+
+          const updatedResponse = await fetch(`${path}${routes.getPokemon}`);
+          existingPokemons = await updatedResponse.json();
+
+          console.log(
+            "Oppdatert Pokémon liste etter tillegg:",
+            existingPokemons
+          );
         }
-      })
-      .then((newOrExistingPokemons) => {
-        setPokemonList(newOrExistingPokemons);
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-        setError("Kunne ikke laste eller opprette Pokémon-data.");
-      });
-  }, []);
+
+        setPokemonList(existingPokemons);
+      } catch (error) {
+        console.error("Error ved henting av Pokémon data:", error);
+        setError("Kunne ikke laste Pokémon-data.");
+      }
+    };
+
+    if (!isInitialized) {
+      fetchPokemons();
+    }
+  }, [isInitialized]);
 
   useEffect(() => {
     const filtered = pokemonList.filter((pokemon) =>

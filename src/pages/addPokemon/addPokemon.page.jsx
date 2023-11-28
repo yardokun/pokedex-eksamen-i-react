@@ -25,20 +25,31 @@ export default function AddPokemon() {
 
     const url = `${path}/pokemon`;
 
-    const pokemonData = { navn, type, nivå, trenerId };
+    fetch(url)
+      .then((response) => response.json())
+      .then((existingPokemons) => {
+        // Sjekker om Pokémonen allerede eksisterer
+        const existingPokemon = existingPokemons.find(
+          (pokemon) => pokemon.navn.toLowerCase() === navn.toLowerCase()
+        );
+        if (existingPokemon) {
+          alert("Denne Pokémonen eksisterer allerede!");
+          return;
+        }
 
-    fetch(url, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(pokemonData),
-    })
+        // Hvis Pokémonen ikke eksisterer, legg til en ny
+        const pokemonData = { navn, type, nivå, trenerId };
+        return fetch(url, {
+          method: "POST",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify(pokemonData),
+        });
+      })
       .then((response) => {
-        if (!response.ok) {
+        if (response && !response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
-        return response.json();
+        return response ? response.json() : null;
       })
       .then(() => {
         setIsSubmitted(true);
