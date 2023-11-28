@@ -3,9 +3,10 @@
   color: var(--color-primary);
   border: 0.1rem solid var(--color-primary);
   border-radius: 1rem;
-  padding: 0.5rem;
+  padding: 0.625rem 1.875rem;
   box-shadow: rgba(0, 0, 0, 0.1) 0px 10px 15px -3px,
     rgba(0, 0, 0, 0.05) 0px 4px 6px -2px;
+  margin: 1.875rem 1.875rem 0;
 }
 
 input::placeholder {

@@ -19,8 +19,18 @@ export const FavoritesProvider = ({ children }) => {
     });
   };
 
+  const removeFavorite = (pokemonName) => {
+    setFavorites((prevFavorites) => {
+      const newFavorites = { ...prevFavorites };
+      delete newFavorites[pokemonName];
+      return newFavorites;
+    });
+  };
+
   return (
-    <FavoritesContext.Provider value={{ favorites, toggleFavorite }}>
+    <FavoritesContext.Provider
+      value={{ favorites, toggleFavorite, removeFavorite }}
+    >
       {children}
     </FavoritesContext.Provider>
   );

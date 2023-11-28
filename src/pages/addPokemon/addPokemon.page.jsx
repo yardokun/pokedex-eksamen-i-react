@@ -11,21 +11,21 @@ export default function AddPokemon() {
   const [navn, setName] = useState("");
   const [type, setType] = useState("");
   const [nivå, setLevel] = useState("");
-  const [trener, setTrainer] = useState(""); // Anta at du har en måte å velge/sette trener på
+  const [trenerId, setTrenerId] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState("");
 
   const handleSubmit = (event) => {
     event.preventDefault();
 
-    if (!navn || !type || !nivå || !trener) {
+    if (!navn || !type || !nivå || !trenerId) {
       alert("Du må fylle inn all informasjonen om din pokémon først!");
       return;
     }
 
     const url = `${path}/pokemon`;
 
-    const pokemonData = { navn, type, nivå, trener };
+    const pokemonData = { navn, type, nivå, trenerId };
 
     fetch(url, {
       method: "POST",
@@ -45,7 +45,7 @@ export default function AddPokemon() {
         setName("");
         setType("");
         setLevel("");
-        setTrainer("");
+        setTrenerId("");
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -56,41 +56,43 @@ export default function AddPokemon() {
 
   return (
     <PageContainer>
-      <Title title="Legg til din Pokémon" />
-      <form onSubmit={handleSubmit}>
-        <InputText
-          text="Navn..."
-          value={navn}
-          onChange={(e) => setName(e.target.value)}
-        />
-        <InputText
-          text="Type..."
-          value={type}
-          onChange={(e) => setType(e.target.value)}
-        />
-        <InputText
-          text="Nivå..."
-          value={nivå}
-          onChange={(e) => setLevel(e.target.value)}
-        />
-        <SelectTrainer
-          value={trener}
-          onChange={(e) => setTrainer(e.target.value)}
-        />
-        <button type="submit" className="add-pokemon-btn">
-          Legg til
-        </button>
-      </form>
-      {isSubmitted && (
-        <p className="response-message">
-          Din Pokémon ble lagt til i <a href="/allPokemon">Alle Pokémon</a>!
-        </p>
-      )}
-      {error && <p className="error-message">{error}</p>}
-      <div className="icon-links-container">
-        <IconLink icon="allPokemon" size="60" />
-        <IconLink icon="addPokemon" size="60" />
-        <IconLink icon="myFavorites" size="70" />
+      <div className="main-container">
+        <Title title="Legg til din Pokémon" />
+        <form onSubmit={handleSubmit}>
+          <InputText
+            text="Navn..."
+            value={navn}
+            onChange={(e) => setName(e.target.value)}
+          />
+          <InputText
+            text="Type..."
+            value={type}
+            onChange={(e) => setType(e.target.value)}
+          />
+          <InputText
+            text="Nivå..."
+            value={nivå}
+            onChange={(e) => setLevel(e.target.value)}
+          />
+          <SelectTrainer
+            value={trenerId}
+            onChange={(e) => setTrenerId(e.target.value)}
+          />
+          <button type="submit" className="add-pokemon-btn">
+            Legg til
+          </button>
+        </form>
+        {isSubmitted && (
+          <p className="response-message">
+            Din Pokémon ble lagt til i <a href="/allPokemon">Alle Pokémon</a>!
+          </p>
+        )}
+        {error && <p className="error-message">{error}</p>}
+        <div className="icon-links-container">
+          <IconLink icon="allPokemon" size="60" />
+          <IconLink icon="addPokemon" size="60" />
+          <IconLink icon="myFavorites" size="70" />
+        </div>
       </div>
     </PageContainer>
   );
