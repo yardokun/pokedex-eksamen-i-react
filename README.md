@@ -20,6 +20,12 @@ npm install
 
 Alle bilder av de forskjellige pokémon er hentet fra https://www.pokemon.com/us/pokedex.
 
+Pokemon-logo: https://www.pngegg.com/en/png-wpzwe
+
+Pokemon-placeholder-bilde: https://www.google.com/search?sca_esv=584551767&rlz=1C5CHFA_enNO1019NO1020&hl=no&sxsrf=AM9HkKm7KbqGKYbwRQEagmyG9EiGeVzcxg:1700652464270&q=pokemon+question+mark+png&tbm=isch&source=lnms&sa=X&ved=2ahUKEwjgn5OQwNeCAxVtFBAIHX3OB2MQ0pQJegQICxAB&biw=1440&bih=790&dpr=2#imgrc=AWkiklilCU9zEM
+
+Pokemon trenere: https://www.pngwing.com/en/free-png-tmrpw og https://www.pngwing.com/en/free-png-mtzss
+
 Navigasjons-ikonene er laget med DALL-E.
 
 <img src="src/assets/graphics/pokemonball.png" width="100"> <img src="src/assets/graphics/pokemonPencil.png" width="100"> <img src="src/assets/graphics/pokemonFavorite.png" width="100">
