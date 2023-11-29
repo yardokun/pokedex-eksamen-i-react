@@ -13,9 +13,8 @@ export default function AllPokemon() {
   const [pokemonList, setPokemonList] = useState([]);
   const [filteredPokemonList, setFilteredPokemonList] = useState([]);
   const [searchTerm, setSearchTerm] = useState("");
-  const [error, setError] = useState(null);
+  const [error] = useState(null);
   const { favorites, toggleFavorite, removeFavorite } = useFavorites();
-  const [isInitialized, setIsInitialized] = useState(false);
 
   const initPokemons = [
     {
@@ -74,53 +73,28 @@ export default function AllPokemon() {
     },
   ];
 
-  useEffect(() => {
-    const fetchPokemons = async () => {
-      console.log("Starter å hente Pokémon data...");
+  const fetchPokemons = async () => {
+    const response = await fetch(`${path}${routes.getPokemon}`);
+    let existingPokemons = await response.json();
 
-      try {
-        const response = await fetch(`${path}${routes.getPokemon}`);
-        let existingPokemons = await response.json();
-
-        console.log("Mottok eksisterende Pokémon data:", existingPokemons);
-
-        if (existingPokemons.length === 0 && !isInitialized) {
-          console.log("Legger til initielle Pokémon...");
-
-          for (const pokemon of initPokemons) {
-            await fetch(`${path}/pokemon`, {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify(pokemon),
-            });
-          }
-
-          console.log("Initielle Pokémon lagt til.");
-
-          setIsInitialized(true);
-
-          const updatedResponse = await fetch(`${path}${routes.getPokemon}`);
-          existingPokemons = await updatedResponse.json();
-
-          console.log(
-            "Oppdatert Pokémon liste etter tillegg:",
-            existingPokemons
-          );
-        }
-
-        setPokemonList(existingPokemons);
-      } catch (error) {
-        console.error("Error ved henting av Pokémon data:", error);
-        setError("Kunne ikke laste Pokémon-data.");
+    if (existingPokemons.length === 0) {
+      for (const pokemon of initPokemons) {
+        await fetch(`${path}/pokemon`, {
+          method: "POST",
+          headers: {
+            "Content-Type": "application/json",
+          },
+          body: JSON.stringify(pokemon),
+        });
       }
-    };
-
-    if (!isInitialized) {
-      fetchPokemons();
+    } else {
+      setPokemonList(existingPokemons);
     }
-  }, [isInitialized]);
+  };
+
+  useEffect(() => {
+    fetchPokemons();
+  }, []);
 
   useEffect(() => {
     const filtered = pokemonList.filter((pokemon) =>
