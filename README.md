@@ -19,6 +19,7 @@ npm install
 # 2. Bilder
 
 Alle bilder av de forskjellige pokémon er hentet fra https://www.pokemon.com/us/pokedex.
+<img src="src/assets/graphics/bulbasaur.png" width="90"><img src="src/assets/graphics/butterfree.png" width="90"><img src="src/assets/graphics/charizard.png" width="90"><img src="src/assets/graphics/eevee.png" width="90"><img src="src/assets/graphics/pikachu.png" width="90"><img src="src/assets/graphics/wartortle.png" width="90">
 
 [Pokemon-logo](https://www.pngegg.com/en/png-wpzwe)
 
