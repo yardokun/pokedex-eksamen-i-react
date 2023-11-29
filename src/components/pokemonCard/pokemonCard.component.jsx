@@ -5,6 +5,7 @@ import wartortleIcon from "../../assets/graphics/wartortle.png";
 import eeveeIcon from "../../assets/graphics/eevee.png";
 import pikachuIcon from "../../assets/graphics/pikachu.png";
 import butterfreeIcon from "../../assets/graphics/butterfree.png";
+import placholderIcon from "../../assets/graphics/pokemonPlaceholder.png";
 import favedIcon from "../../assets/graphics/pokemonFavorite.png";
 import unfavedIcon from "../../assets/graphics/pokemonFavoriteBlackWhite .png";
 import EditPokemonModal from "../editPokemonModal.component";
@@ -29,13 +30,22 @@ export default function PokemonCard({
   onRemoveFavorite,
 }) {
   function choosePokemonIcon() {
-    if (icon === "Bulbasaur") {
-      return bulbasaurIcon;
-    } else if (icon === "Charizard") return charizardIcon;
-    else if (icon === "Wartortle") return wartortleIcon;
-    else if (icon === "Eevee") return eeveeIcon;
-    else if (icon === "Pikachu") return pikachuIcon;
-    else if (icon === "Butterfree") return butterfreeIcon;
+    switch (icon) {
+      case "Bulbasaur":
+        return bulbasaurIcon;
+      case "Charizard":
+        return charizardIcon;
+      case "Wartortle":
+        return wartortleIcon;
+      case "Eevee":
+        return eeveeIcon;
+      case "Pikachu":
+        return pikachuIcon;
+      case "Butterfree":
+        return butterfreeIcon;
+      default:
+        return placholderIcon;
+    }
   }
 
   if (isEditing) {
