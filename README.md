@@ -34,7 +34,7 @@ Pokemon trenere: [Ash](https://www.pngwing.com/en/free-png-mtzss) og [Gary](http
 
 <img src="/src/assets/graphics/ash-ketchum.png" width="100"> <img src="src/assets/graphics/gary-oak.png" width="60">
 
-Navigasjons-ikonene er laget med DALL-E.
+Navigasjons-ikonene er laget med [DALL-E](https://openai.com/dall-e-3).
 
 <img src="src/assets/graphics/pokemonball.png" width="150"> <img src="src/assets/graphics/pokemonPencil.png" width="150"> <img src="src/assets/graphics/pokemonFavorite.png" width="150">
 
