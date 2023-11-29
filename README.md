@@ -3,6 +3,8 @@
 # Table of content <!-- omit in toc -->
 
 - [1. Installation](#1-installation)
+- [2. Bilder](#2-bilder)
+- [3. Notater til meg selv](#3-notater-til-meg-selv)
 
 # 1. Installation
 
@@ -13,6 +15,16 @@ const hello = "world";
 ```bash
 npm install
 ```
+
+# 2. Bilder
+
+Alle bilder av de forskjellige pokémon er hentet fra https://www.pokemon.com/us/pokedex.
+
+Navigasjons-ikonene er laget med DALL-E.
+
+<img src="src/assets/graphics/pokemonball.png"> <img src="src/assets/graphics/pokemonPencil.png"> <img src="src/assets/graphics/pokemonFavorite.png">
+
+# 3. Notater til meg selv
 
 Kom med forslag til pokémon info som kan legges inn
 
