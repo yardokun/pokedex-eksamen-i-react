@@ -4,12 +4,20 @@ import PageContainer from "../../components/pageContainer/pageContainer";
 import Title from "../../components/title/title.component";
 import IconLink from "../../components/iconLink/iconLink.component";
 import "./myFavorites.styles.css";
+import PokemonEditHandler from "../../components/pokemonEditHandler/pokemonEditHandler.component";
 
 export default function MyFavorites() {
-  const { favorites, toggleFavorite, removeFavorite } = useFavorites();
+  const { favorites, toggleFavorite, removeFavorite, setFavorites } =
+    useFavorites();
 
-  const deletePokemon = (pokemonName) => {
+  /*   const deletePokemon = (pokemonName) => {
     removeFavorite(pokemonName); // Fjerner fra favoritter
+  }; */
+
+  const handleSaveEdit = (updatedPokemon) => {
+    const updatedFavorites = { ...favorites };
+    updatedFavorites[updatedPokemon.navn] = updatedPokemon;
+    setFavorites(updatedFavorites);
   };
 
   return (
@@ -22,18 +30,27 @@ export default function MyFavorites() {
           </p>
         ) : (
           Object.values(favorites).map((favPokemon) => (
-            <PokemonCard
+            <PokemonEditHandler
               key={favPokemon._id}
-              icon={favPokemon.navn}
-              name={favPokemon.navn}
-              type={favPokemon.type}
-              level={favPokemon.nivå}
-              trainerId={favPokemon.trenerId}
               pokemon={favPokemon}
-              favIcon="faved"
-              onToggleFavorite={() => toggleFavorite(favPokemon)}
-              onDelete={() => deletePokemon(favPokemon.navn)}
-            />
+              onSaveEdit={handleSaveEdit}
+            >
+              {(handleEdit) => (
+                <PokemonCard
+                  key={favPokemon._id}
+                  icon={favPokemon.navn}
+                  name={favPokemon.navn}
+                  type={favPokemon.type}
+                  level={favPokemon.nivå}
+                  trainerId={favPokemon.trenerId}
+                  pokemon={favPokemon}
+                  favIcon="faved"
+                  onToggleFavorite={() => toggleFavorite(favPokemon)}
+                  onDelete={() => removeFavorite(favPokemon.navn)}
+                  onEdit={handleEdit}
+                />
+              )}
+            </PokemonEditHandler>
           ))
         )}
         <div className="icon-links-container">

@@ -7,6 +7,7 @@ import IconLink from "../../components/iconLink/iconLink.component";
 import { path, routes } from "../../routing/endpoints";
 import "./allPokemon.styles.css";
 import Searchbar from "../../components/searchbar/searchbar.component";
+import PokemonEditHandler from "../../components/pokemonEditHandler/pokemonEditHandler.component";
 
 export default function AllPokemon() {
   const [pokemonList, setPokemonList] = useState([]);
@@ -14,7 +15,6 @@ export default function AllPokemon() {
   const [searchTerm, setSearchTerm] = useState("");
   const [error, setError] = useState(null);
   const { favorites, toggleFavorite, removeFavorite } = useFavorites();
-  const [editingPokemon, setEditingPokemon] = useState(null);
   const [isInitialized, setIsInitialized] = useState(false);
 
   const initPokemons = [
@@ -150,10 +150,6 @@ export default function AllPokemon() {
       });
   };
 
-  const handleEdit = (pokemon) => {
-    setEditingPokemon(pokemon);
-  };
-
   const handleSaveEdit = (updatedPokemon) => {
     const { _id, ...updatedData } = updatedPokemon;
 
@@ -166,15 +162,10 @@ export default function AllPokemon() {
         setPokemonList(
           pokemonList.map((p) => (p._id === _id ? updatedPokemon : p))
         );
-        setEditingPokemon(null);
       })
       .catch((error) => {
         console.error("Error:", error);
       });
-  };
-
-  const handleCancelEdit = () => {
-    setEditingPokemon(null);
   };
 
   return (
@@ -183,38 +174,31 @@ export default function AllPokemon() {
         <Searchbar value={searchTerm} onChange={handleSearchChange} />
         <Title title="Alle Pokémon" />
         {error && <p className="error-message">{error}</p>}
-        {pokemonList.length === 0 && !searchTerm && !error && (
-          <div className="no-data-message">
-            Du har ikke lagt til noen pokémon enda. Gå til{" "}
-            <a href="/addPokemon">Legg til Pokémon</a>-siden for å legge til nye
-            Pokémon.
-          </div>
-        )}
-        {searchTerm && filteredPokemonList.length === 0 && !error && (
-          <div className="no-data-message">
-            Ingen Pokémon funnet. Prøv et annet søkeord.
-          </div>
-        )}
         {(searchTerm ? filteredPokemonList : pokemonList).map((pokemon) => (
-          <PokemonCard
+          <PokemonEditHandler
             key={pokemon._id}
-            icon={pokemon.navn}
-            name={pokemon.navn}
-            type={pokemon.type}
-            baseEvolution={pokemon.baseEvolusjon}
-            midEvolution={pokemon.midEvolusjon}
-            fullEvolution={pokemon.fullEvolusjon}
-            level={pokemon.nivå}
-            trainerId={pokemon.trenerId}
             pokemon={pokemon}
-            favIcon={favorites[pokemon.navn] ? "faved" : "unfaved"}
-            onToggleFavorite={() => toggleFavorite(pokemon)}
-            onDelete={() => deletePokemon(pokemon._id, pokemon.navn)}
-            onEdit={() => handleEdit(pokemon)}
-            isEditing={editingPokemon && editingPokemon._id === pokemon._id}
             onSaveEdit={handleSaveEdit}
-            onCancelEdit={handleCancelEdit}
-          />
+          >
+            {(handleEdit) => (
+              <PokemonCard
+                key={pokemon._id}
+                icon={pokemon.navn}
+                name={pokemon.navn}
+                type={pokemon.type}
+                baseEvolution={pokemon.baseEvolusjon}
+                midEvolution={pokemon.midEvolusjon}
+                fullEvolution={pokemon.fullEvolusjon}
+                level={pokemon.nivå}
+                trainerId={pokemon.trenerId}
+                pokemon={pokemon}
+                favIcon={favorites[pokemon.navn] ? "faved" : "unfaved"}
+                onToggleFavorite={() => toggleFavorite(pokemon)}
+                onDelete={() => deletePokemon(pokemon._id, pokemon.navn)}
+                onEdit={handleEdit}
+              />
+            )}
+          </PokemonEditHandler>
         ))}
         <div className="icon-links-container">
           <IconLink icon="allPokemon" size="60" />

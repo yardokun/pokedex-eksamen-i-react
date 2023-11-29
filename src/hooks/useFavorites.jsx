@@ -29,7 +29,7 @@ export const FavoritesProvider = ({ children }) => {
 
   return (
     <FavoritesContext.Provider
-      value={{ favorites, toggleFavorite, removeFavorite }}
+      value={{ favorites, setFavorites, toggleFavorite, removeFavorite }}
     >
       {children}
     </FavoritesContext.Provider>
