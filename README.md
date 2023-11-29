@@ -22,7 +22,7 @@ Alle bilder av de forskjellige pokémon er hentet fra https://www.pokemon.com/us
 
 Navigasjons-ikonene er laget med DALL-E.
 
-<img src="src/assets/graphics/pokemonball.png"> <img src="src/assets/graphics/pokemonPencil.png"> <img src="src/assets/graphics/pokemonFavorite.png">
+<img src="src/assets/graphics/pokemonball.png" width="100"> <img src="src/assets/graphics/pokemonPencil.png" width="100"> <img src="src/assets/graphics/pokemonFavorite.png" width="100">
 
 # 3. Notater til meg selv
 
