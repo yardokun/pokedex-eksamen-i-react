@@ -33,7 +33,7 @@ npm -v
    
 Pakk ut den zippede mappen til et ønsket sted på din maskin.
 
-1. **Naviger til prosjektmappe**
+2. **Naviger til prosjektmappe**
    
 Åpne terminalen og naviger til prosjektets rotmappe:
 
@@ -41,7 +41,7 @@ Pakk ut den zippede mappen til et ønsket sted på din maskin.
 cd sti/til/din/utpakkede/mappe/eksamen-i-react
 ```
 
-1. **Installer avhengigheter**
+3. **Installer avhengigheter**
    
 Når du er inne i prosjektets rotmappe, kjør følgende kommando for å installere alle nødvendige avhengigheter:
 
