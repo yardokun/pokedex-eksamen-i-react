@@ -7,18 +7,18 @@ Les første punkt, **"Installasjon"**, for å komme i gang med appen.
 # Innhold <!-- omit in toc -->
 
 - [1. Installasjon](#1-installasjon)
-  - [Forutsetninger](#forutsetninger)
-  - [Oppsett](#oppsett)
-  - [Kjør appen](#kjør-appen)
+  - [1.1. Forutsetninger](#11-forutsetninger)
+  - [1.2. Oppsett](#12-oppsett)
+  - [1.3. Kjør appen](#13-kjør-appen)
 - [2. Design](#2-design)
-  - [Planlegging i Adobe](#planlegging-i-adobe)
-  - [Bilder](#bilder)
+  - [2.1. Planlegging i Adobe](#21-planlegging-i-adobe)
+  - [2.2. Bilder](#22-bilder)
 - [3. Notater til meg selv](#3-notater-til-meg-selv)
 
 
 # 1. Installasjon
 
-## Forutsetninger
+## 1.1. Forutsetninger
 
 Før du starter, må du sikre at du har følgende installert på din maskin:
 
@@ -31,7 +31,7 @@ Du kan sjekke versjonene av disse verktøyene ved å kjøre følgende kommandoer
 node -v
 npm -v
 ```
-## Oppsett
+## 1.2. Oppsett
 
 1. **Åpne den zippede mappen**
    
@@ -53,7 +53,7 @@ Når du er inne i prosjektets rotmappe, kjør følgende kommando for å installe
 npm install
 ```
 
-## Kjør appen
+## 1.3. Kjør appen
 
 For å starte appen lokalt på din maskin, kjør følgende kommando i prosjektets rotmappe:
 
@@ -74,15 +74,15 @@ npm install
 
 # 2. Design
 
-## Planlegging i Adobe
+## 2.1. Planlegging i Adobe
 
 Jeg startet med å lage et raskt design av hele appen i Adobe, for å kunne se hvordan jeg ville at den skulle se ut, samt kunne planlegge de ulike funksjonene og React-komponentene.
 
-Etterhvert som jeg jobbet med prosjektet, innså jeg at jeg måtte gjøre noen endringer på designet, for å kunne implementere alle de nødvendige funksjonene. Derfor har jeg gått litt bort fra den opprinnelige idéen noen steder og gjort en del justeringer.
+Etterhvert som jeg jobbet med prosjektet, innså jeg at jeg måtte gjøre noen endringer på designet, for å kunne implementere alle de nødvendige funksjonene. Derfor har jeg gått litt bort fra den opprinnelige idéen noen steder og gjort en del justeringer i appen.
 
 [Link til designet i Adobe.](https://xd.adobe.com/view/9edc2693-e55b-4095-9610-b42570c19924-cb8f/)
 
-## Bilder
+## 2.2. Bilder
 
 Alle bilder av de forskjellige pokémon er hentet fra https://www.pokemon.com/us/pokedex.
 
