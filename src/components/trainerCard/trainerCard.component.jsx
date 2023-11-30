@@ -15,7 +15,7 @@ export default function TrainerCard({ name, age, trainerLevel, pokemons }) {
 
   function iconSize() {
     if (name === "Gary Oak") {
-      return "60";
+      return "50";
     }
     return "90";
   }

@@ -13,7 +13,8 @@ Les første punkt, **"Installasjon"**, for å komme i gang med appen.
 - [2. Design](#2-design)
   - [2.1. Planlegging i Adobe](#21-planlegging-i-adobe)
   - [2.2. Bilder](#22-bilder)
-- [3. Notater til meg selv](#3-notater-til-meg-selv)
+- [3. Appens arkitektur](#3-appens-arkitektur)
+- [4. Notater til meg selv](#4-notater-til-meg-selv)
 
 
 # 1. Installasjon
@@ -104,13 +105,41 @@ Navigasjons-ikonene er laget med [DALL-E](https://openai.com/dall-e-3).
 
 <img src="src/assets/graphics/pokemonball.png" width="150"> <img src="src/assets/graphics/pokemonPencil.png" width="150"> <img src="src/assets/graphics/pokemonFavorite.png" width="150">
 
-# 3. Notater til meg selv
+# 3. Appens arkitektur
+
+Appen har en hierarkisk struktur som starter med **index.js** på toppen, som rendrer **App.jsx**-komponenten.
+
+Fra **App.jsx** er det en sentral forgrening til forskjellige context providers som innkapsler hele applikasjonen, nemlig **FavoritesProvider** og **TrainersProvider**. Disse context providers gjør visse data tilgjengelige gjennom hele applikasjonen.
+
+Komponenten **Routing.jsx** kalles inne i **App.jsx**, som deretter bestemmer hovedrutene i applikasjonen, som fører til forskjellige sidekomponenter som **Home.page.jsx**, **AllPokemon.page.jsx**, **AddPokemon.page.jsx**, og **MyFavorites.page.jsx**.
+
+Hver av disse sidene kan representeres som separate grener som stammer fra **Routing.jsx**. De kan også bruke felles komponenter som **PokemonCard**, **TrainerCard**, **Searchbar**, osv. For eksempel, **AllPokemon.page.jsx** vil vise at den bruker **PokemonCard**, **Searchbar**, og **TrainerCard**.
+
+```
+Index.js
+  |
+  App.jsx
+  |---FavoritesProvider
+  |---TrainersProvider
+  |
+  Routing.jsx
+    |
+    |-- Home.page.jsx
+    |-- AllPokemon.page.jsx
+    |     |-- PokemonCard.component.jsx
+    |     |-- Searchbar.component.jsx
+    |     |-- TrainerCard.component.jsx
+    |
+    |-- AddPokemon.page.jsx
+    |     |-- SelectTrainer.component.jsx
+    |
+    |-- MyFavorites.page.jsx
+          |-- PokemonCard.component.jsx
+```
+
+# 4. Notater til meg selv
 
 Kom med forslag til pokémon info som kan legges inn
-
-Legg ved bilder av alle pokémon
-
-Legg ved bilder av ikoner jeg har laget med DALL.E
 
 
 Vise pokemonkort på allPokemon.
