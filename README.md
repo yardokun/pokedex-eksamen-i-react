@@ -1,4 +1,4 @@
-# Pokédex <!-- omit in toc -->
+# <img src="src/assets/graphics/pokemonball.png" width="50">  Pokédex <!-- omit in toc -->
 
 Pokédex er en React-basert webapplikasjon som lar brukere se informasjon om pokémoner og deres trenere.
 
@@ -9,7 +9,7 @@ Les første punkt, **"Installasjon"**, for å komme i gang med appen.
 - [1. Installasjon](#1-installasjon)
   - [1.1. Forutsetninger](#11-forutsetninger)
   - [1.2. Oppsett](#12-oppsett)
-  - [1.3. Kjør appen](#13-kjør-appen)
+  - [1.3. Kjøre appen](#13-kjøre-appen)
 - [2. Design](#2-design)
   - [2.1. Planlegging i Adobe](#21-planlegging-i-adobe)
   - [2.2. Bilder](#22-bilder)
@@ -53,7 +53,7 @@ Når du er inne i prosjektets rotmappe, kjør følgende kommando for å installe
 npm install
 ```
 
-## 1.3. Kjør appen
+## 1.3. Kjøre appen
 
 For å starte appen lokalt på din maskin, kjør følgende kommando i prosjektets rotmappe:
 
