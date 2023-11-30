@@ -115,6 +115,8 @@ Komponenten `Routing.jsx` kalles inne i `App.jsx`, som deretter bestemmer hovedr
 
 Hver av disse sidene kan representeres som separate grener som stammer fra `Routing.jsx`. De kan også bruke felles komponenter som `PokemonCard`, `TrainerCard`, `Searchbar`, osv. For eksempel, `AllPokemon.page.jsx` vil vise at den bruker `PokemonCard`, `Searchbar`, og `TrainerCard`.
 
+Her er en forenklet representasjon:
+
 ```
 Index.js
   |
