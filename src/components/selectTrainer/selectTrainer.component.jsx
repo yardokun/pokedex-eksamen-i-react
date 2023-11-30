@@ -4,6 +4,7 @@ import React, { useContext } from "react";
 
 export default function SelectTrainer({ value, onChange }) {
   const { trainers } = useContext(TrainersContext);
+  
   return (
     <div className="select-container">
       <select className="selecter" value={value} onChange={onChange}>

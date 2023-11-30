@@ -1,3 +1,5 @@
+import { useContext } from "react";
+import { TrainersContext } from "../../contexts/trainersContext";
 import IconLink from "../../components/iconLink/iconLink.component";
 import InputText from "../../components/inputText/inputText.component";
 import PageContainer from "../../components/pageContainer/pageContainer";
@@ -14,55 +16,79 @@ export default function AddPokemon() {
   const [trenerId, setTrenerId] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState("");
+  const { trainers } = useContext(TrainersContext);
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
     if (!navn || !type || !nivå || !trenerId) {
-      alert("Du må fylle inn all informasjonen om din pokémon først!");
+      alert("Du må fylle inn all informasjonen om din Pokémon først!");
       return;
     }
 
-    const url = `${path}/pokemon`;
+    try {
+      const url = `${path}/pokemon`;
+      let response = await fetch(url);
+      let existingPokemons = await response.json();
 
-    fetch(url)
-      .then((response) => response.json())
-      .then((existingPokemons) => {
-        // Sjekker om Pokémonen allerede eksisterer
-        const existingPokemon = existingPokemons.find(
-          (pokemon) => pokemon.navn.toLowerCase() === navn.toLowerCase()
-        );
-        if (existingPokemon) {
-          alert("Denne Pokémonen eksisterer allerede!");
-          return;
-        }
+      // Sjekk om Pokémonen allerede eksisterer
+      const existingPokemon = existingPokemons.find(
+        (pokemon) => pokemon.navn.toLowerCase() === navn.toLowerCase()
+      );
 
-        // Hvis Pokémonen ikke eksisterer, legg til en ny
-        const pokemonData = { navn, type, nivå, trenerId };
-        return fetch(url, {
-          method: "POST",
+      if (existingPokemon) {
+        alert("Denne Pokémonen eksisterer allerede!");
+        return;
+      }
+
+      // Opprett en ny Pokémon
+      const newPokemonData = { navn, type, nivå, trener: trenerId };
+      response = await fetch(url, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(newPokemonData),
+      });
+
+      if (!response.ok) {
+        throw new Error(`HTTP error! Status: ${response.status}`);
+      }
+
+      const newPokemon = await response.json();
+
+      // Oppdater treneren med den nye Pokémonen
+      const selectedTrainer = trainers.find(
+        (trainer) => trainer._id === trenerId
+      );
+      if (selectedTrainer) {
+        let updatedTrainerPokemons = selectedTrainer.pokemons
+          ? [...selectedTrainer.pokemons, newPokemon._id]
+          : [newPokemon._id];
+        const updatedTrainer = {
+          ...selectedTrainer,
+          pokemons: updatedTrainerPokemons,
+        };
+        console.log("Updated Trainer Data:", updatedTrainer);
+        response = await fetch(`${path}/trenere/${trenerId}`, {
+          method: "PUT",
           headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(pokemonData),
+          body: JSON.stringify(updatedTrainer),
         });
-      })
-      .then((response) => {
-        if (response && !response.ok) {
+
+        if (!response.ok) {
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
-        return response ? response.json() : null;
-      })
-      .then(() => {
-        setIsSubmitted(true);
-        setName("");
-        setType("");
-        setLevel("");
-        setTrenerId("");
-      })
-      .catch((error) => {
-        console.error("Error:", error);
-        setError("Det oppstod en feil ved innsending.");
-        setIsSubmitted(false);
-      });
+      }
+
+      setIsSubmitted(true);
+      setName("");
+      setType("");
+      setLevel("");
+      setTrenerId("");
+    } catch (error) {
+      console.error("Error:", error);
+      setError("Det oppstod en feil ved innsending.");
+      setIsSubmitted(false);
+    }
   };
 
   return (

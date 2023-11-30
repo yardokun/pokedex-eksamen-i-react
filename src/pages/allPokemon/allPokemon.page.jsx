@@ -8,6 +8,7 @@ import { path, routes } from "../../routing/endpoints";
 import "./allPokemon.styles.css";
 import Searchbar from "../../components/searchbar/searchbar.component";
 import PokemonEditHandler from "../../components/pokemonEditHandler/pokemonEditHandler.component";
+import TrainerCard from "../../components/trainerCard/trainerCard.component";
 
 export default function AllPokemon() {
   const [pokemonList, setPokemonList] = useState([]);
@@ -15,6 +16,7 @@ export default function AllPokemon() {
   const [searchTerm, setSearchTerm] = useState("");
   const [error] = useState(null);
   const { favorites, toggleFavorite, removeFavorite } = useFavorites();
+  const [trainerList, setTrainerList] = useState([]);
 
   const initPokemons = [
     {
@@ -73,27 +75,65 @@ export default function AllPokemon() {
     },
   ];
 
-  const fetchPokemons = async () => {
-    const response = await fetch(`${path}${routes.getPokemon}`);
-    let existingPokemons = await response.json();
-
-    if (existingPokemons.length === 0) {
-      for (const pokemon of initPokemons) {
-        await fetch(`${path}/pokemon`, {
-          method: "POST",
-          headers: {
-            "Content-Type": "application/json",
-          },
-          body: JSON.stringify(pokemon),
-        });
-      }
-    } else {
-      setPokemonList(existingPokemons);
-    }
-  };
+  const initTrainers = [
+    {
+      navn: "Ash Ketchum",
+      alder: 12,
+      trenernivå: "Mester",
+      pokemons: [],
+    },
+    {
+      navn: "Gary Oak",
+      alder: 15,
+      trenernivå: "Elite Fire",
+      pokemons: [],
+    },
+  ];
 
   useEffect(() => {
-    fetchPokemons();
+    const fetchPokemons = async () => {
+      const response = await fetch(`${path}${routes.getPokemon}`);
+      return await response.json();
+    };
+
+    const fetchTrainers = async () => {
+      const response = await fetch(`${path}${routes.getTrainers}`);
+      const trainers = await response.json();
+      console.log("Fetched trainers:", trainers);
+      return trainers;
+    };
+
+    const initApp = async () => {
+      const pokemons = await fetchPokemons();
+      let trainers = await fetchTrainers();
+
+      if (pokemons.length === 0) {
+        for (const pokemon of initPokemons) {
+          await fetch(`${path}/pokemon`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(pokemon),
+          });
+        }
+      }
+      setPokemonList(pokemons);
+
+      const trainersInitialized = localStorage.getItem("trainersInitialized");
+      if (trainers.length === 0 && !trainersInitialized) {
+        for (const trainer of initTrainers) {
+          await fetch(`${path}/trenere`, {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(trainer),
+          });
+        }
+        localStorage.setItem("trainersInitialized", "true");
+        trainers = await fetchTrainers();
+      }
+      setTrainerList(trainers);
+    };
+
+    initApp();
   }, []);
 
   useEffect(() => {
@@ -174,6 +214,21 @@ export default function AllPokemon() {
             )}
           </PokemonEditHandler>
         ))}
+        <Title title="Alle Trenere" />
+        {trainerList.length > 0 ? (
+          trainerList.map((trainer) => (
+            <TrainerCard
+              key={trainer._id}
+              icon={trainer.navn}
+              name={trainer.navn}
+              age={trainer.alder}
+              trainerLevel={trainer.trenernivå}
+              pokemons={trainer.pokemons}
+            />
+          ))
+        ) : (
+          <p>Ingen trenere funnet</p>
+        )}
         <div className="icon-links-container">
           <IconLink icon="allPokemon" size="60" />
           <IconLink icon="addPokemon" size="60" />
