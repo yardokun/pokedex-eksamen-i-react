@@ -3,12 +3,7 @@ import ashIcon from "../../assets/graphics/ash-ketchum.png";
 import garyIcon from "../../assets/graphics/gary-oak.png";
 import placeholderIcon from "../../assets/graphics/pokemonPlaceholder.png";
 
-export default function TrainerCard({
-  name,
-  age,
-  trainerLevel,
-  pokemons,
-}) {
+export default function TrainerCard({ name, age, trainerLevel, pokemons }) {
   function chooseTrainerIcon() {
     if (name === "Ash Ketchum") {
       return ashIcon;
@@ -18,10 +13,17 @@ export default function TrainerCard({
     return placeholderIcon;
   }
 
+  function iconSize() {
+    if (name === "Gary Oak") {
+      return "60";
+    }
+    return "90";
+  }
+
   return (
     <div className="trainer-card-container">
       <div className="card-background">
-        <img src={chooseTrainerIcon()} width="90" alt={name} />
+        <img src={chooseTrainerIcon()} width={iconSize()} alt={name} />
         <div className="card-content">
           <div className="card-text">
             <p className="text">Navn: {name}</p>

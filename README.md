@@ -1,12 +1,61 @@
-# Project <!-- omit in toc -->
+# Pokédex <!-- omit in toc -->
 
-# Table of content <!-- omit in toc -->
+Pokédex er en React-basert webapplikasjon som lar brukere se informasjon om pokémoner og deres trenere. Denne guiden vil hjelpe deg med å komme i gang med appen.
 
-- [1. Installation](#1-installation)
+# Innhold <!-- omit in toc -->
+
+- [1. Installasjon](#1-installasjon)
+  - [Forutsetninger](#forutsetninger)
+  - [Oppsett](#oppsett)
+  - [Kjør appen](#kjør-appen)
 - [2. Bilder](#2-bilder)
 - [3. Notater til meg selv](#3-notater-til-meg-selv)
 
-# 1. Installation
+
+# 1. Installasjon
+
+## Forutsetninger
+
+Før du starter, må du sikre at du har følgende installert på din maskin:
+
+* Node.js (Versjon 12 eller nyere)
+* NPM (Node Package Manager, følger vanligvis med Node.js installasjon)
+
+Du kan sjekke versjonene av disse verktøyene ved å kjøre følgende kommandoer i terminalen:
+
+```bash
+node -v
+npm -v
+```
+## Oppsett
+
+1. **Åpne den zippede mappen**
+Pakk ut den zippede mappen til et ønsket sted på din maskin.
+
+2. **Naviger til prosjektmappe**
+Åpne terminalen og naviger til prosjektets rotmappe:
+
+```bash
+cd sti/til/din/utpakkede/mappe/eksamen-i-react
+```
+
+3. **Installer avhengigheter**
+Når du er inne i prosjektets rotmappe, kjør følgende kommando for å installere alle nødvendige avhengigheter:
+
+```bash
+npm install
+```
+
+## Kjør appen
+
+For å starte appen lokalt på din maskin, kjør følgende kommando i prosjektets rotmappe:
+
+```bash
+npm start
+```
+
+Dette vil starte utviklingsserveren og åpne appen i din standard nettleser. Hvis nettleseren ikke åpner automatisk, kan du manuelt navigere til **http://localhost:3000** for å vise appen.
+
 
 ```js
 const hello = "world";
