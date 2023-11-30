@@ -30,16 +30,19 @@ npm -v
 ## Oppsett
 
 1. **Åpne den zippede mappen**
+   
 Pakk ut den zippede mappen til et ønsket sted på din maskin.
 
-2. **Naviger til prosjektmappe**
+1. **Naviger til prosjektmappe**
+   
 Åpne terminalen og naviger til prosjektets rotmappe:
 
 ```bash
 cd sti/til/din/utpakkede/mappe/eksamen-i-react
 ```
 
-3. **Installer avhengigheter**
+1. **Installer avhengigheter**
+   
 Når du er inne i prosjektets rotmappe, kjør følgende kommando for å installere alle nødvendige avhengigheter:
 
 ```bash
