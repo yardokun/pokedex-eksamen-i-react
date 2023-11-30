@@ -1,6 +1,8 @@
 # Pokédex <!-- omit in toc -->
 
-Pokédex er en React-basert webapplikasjon som lar brukere se informasjon om pokémoner og deres trenere. Denne guiden vil hjelpe deg med å komme i gang med appen.
+Pokédex er en React-basert webapplikasjon som lar brukere se informasjon om pokémoner og deres trenere.
+
+Les første punkt, **"Installasjon"**, for å komme i gang med appen.
 
 # Innhold <!-- omit in toc -->
 
@@ -8,7 +10,9 @@ Pokédex er en React-basert webapplikasjon som lar brukere se informasjon om pok
   - [Forutsetninger](#forutsetninger)
   - [Oppsett](#oppsett)
   - [Kjør appen](#kjør-appen)
-- [2. Bilder](#2-bilder)
+- [2. Design](#2-design)
+  - [Planlegging i Adobe](#planlegging-i-adobe)
+  - [Bilder](#bilder)
 - [3. Notater til meg selv](#3-notater-til-meg-selv)
 
 
@@ -68,7 +72,17 @@ const hello = "world";
 npm install
 ```
 
-# 2. Bilder
+# 2. Design
+
+## Planlegging i Adobe
+
+Jeg startet med å lage et raskt design av hele appen i Adobe, for å kunne se hvordan jeg ville at den skulle se ut, samt kunne planlegge de ulike funksjonene og React-komponentene.
+
+Etterhvert som jeg jobbet med prosjektet, innså jeg at jeg måtte gjøre noen endringer på designet, for å kunne implementere alle de nødvendige funksjonene. Derfor har jeg gått litt bort fra den opprinnelige idéen noen steder og gjort en del justeringer.
+
+[Link til designet i Adobe.](https://xd.adobe.com/view/9edc2693-e55b-4095-9610-b42570c19924-cb8f/)
+
+## Bilder
 
 Alle bilder av de forskjellige pokémon er hentet fra https://www.pokemon.com/us/pokedex.
 
