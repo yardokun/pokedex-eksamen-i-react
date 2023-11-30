@@ -1,4 +1,4 @@
-# <img src="src/assets/graphics/pokemonball.png" width="50">  Pokédex <!-- omit in toc -->
+# Pokédex <!-- omit in toc -->
 
 Pokédex er en React-basert webapplikasjon som lar brukere se informasjon om pokémoner og deres trenere.
 
