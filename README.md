@@ -23,6 +23,7 @@ Les første punkt, **"Installasjon"**, for å komme i gang med appen.
   - [3.1. Planlegging i Adobe](#31-planlegging-i-adobe)
   - [3.2. Bilder](#32-bilder)
 - [4. Appens arkitektur](#4-appens-arkitektur)
+  - [React.StrictMode](#reactstrictmode)
 - [5. Notater til meg selv](#5-notater-til-meg-selv)
 
 
@@ -210,6 +211,12 @@ Index.js
     |-- MyFavorites.page.jsx
           |-- PokemonCard.component.jsx
 ```
+
+## React.StrictMode
+
+I `index.js` har jeg kommentert ut *React.StrictMode*, siden jeg opplevde at denne ga meg duplikater av alle pokémonkort på siden om jeg hadde den aktivert. Men den er bra å bruke i utviklermodus, siden StrictMode er et verktøy for å fremheve potensielle problemer i en applikasjon. Når StrictMode er aktivert, kompilerer React en liste over alle klassekomponenter som bruker de usikre livssyklusene, og logger en advarselsmelding med informasjon om disse komponentene. [Kilde.](https://legacy.reactjs.org/docs/strict-mode.html)
+
+Jeg ble dessverre nødt til å deaktivere den får å få appikasjonen til å kjøre som den skal.
 
 # 5. Notater til meg selv
 
