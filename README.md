@@ -11,6 +11,10 @@ Les første punkt, **"Installasjon"**, for å komme i gang med appen.
   - [1.2. Oppsett](#12-oppsett)
   - [1.3. Kjøre appen](#13-kjøre-appen)
 - [2. Bruk av appen](#2-bruk-av-appen)
+  - [2.1. Pokemon API](#21-pokemon-api)
+    - [Kontekst](#kontekst)
+  - [Viktige Merknader](#viktige-merknader)
+  - [Hvor i koden API-nøkkelen implementeres](#hvor-i-koden-api-nøkkelen-implementeres)
 - [3. Design](#3-design)
   - [3.1. Planlegging i Adobe](#31-planlegging-i-adobe)
   - [3.2. Bilder](#32-bilder)
@@ -76,7 +80,34 @@ npm install
 
 # 2. Bruk av appen
 
+## 2.1. Pokemon API
 
+### Kontekst
+
+API-et benytter https://crudcrud.com/ som backend, som tilbyr en enkel RESTful tjeneste for å lagre og
+hente data. Det er viktig å merke seg at https://crudcrud.com/ har begrensninger som utløpsdato for API-
+nøkkelen og mangel på relasjonsdatabasefunksjoner.
+
+## Viktige Merknader
+
+**Fornyelse av API-nøkkel:**
+
+https://crudcrud.com/ tilbyr en begrensning på 100 API-forespørsler og lagringskapasitet for hver 24-timers
+periode. Når grensen på 100 forespørsler er nådd, eller etter 24 timer, vil den unike API-nøkkelen utløpe, og
+alle lagrede data vil bli slettet. For å fortsette å bruke tjenesten, må du generere en ny nøkkel.
+
+**For å få en ny API-nøkkel umiddelbart:**
+
+1. Åpne utviklerverktøy i Google Chrome (Cmd+Option+I/Ctrl+Shift+I).
+2. Gå til 'Application'-fanen.
+3. I venstre kolonne, velg 'Storage'.
+4. Klikk på 'Clear site data' knappen.
+5. Oppdater nettstedet (Cmd+R/Ctrl+R).
+Etter oppdatering vil https://crudcrud.com/ generere en ny unik API-nøkkel som du kan bruke.
+
+## Hvor i koden API-nøkkelen implementeres
+
+Gå til `src/endpoints.js`. Her finnes det en variabel kalt `path`. Bytt ut den nåværende API-nøkkelen med den nye API-nøkkelen.
 
 # 3. Design
 
