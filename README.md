@@ -10,11 +10,15 @@ Les første punkt, **"Installasjon"**, for å komme i gang med appen.
   - [1.1. Forutsetninger](#11-forutsetninger)
   - [1.2. Oppsett](#12-oppsett)
   - [1.3. Kjøre appen](#13-kjøre-appen)
-- [2. Bruk av appen](#2-bruk-av-appen)
-  - [2.1. Pokemon API](#21-pokemon-api)
+  - [1.4. Pokemon API](#14-pokemon-api)
     - [Kontekst](#kontekst)
     - [Viktige Merknader](#viktige-merknader)
     - [Hvor i koden API-nøkkelen implementeres](#hvor-i-koden-api-nøkkelen-implementeres)
+- [2. Bruk av appen](#2-bruk-av-appen)
+  - [Hjem](#hjem)
+  - [Alle Pokémon](#alle-pokémon)
+  - [Legg til din Pokémon](#legg-til-din-pokémon)
+  - [Mine Favoritter](#mine-favoritter)
 - [3. Design](#3-design)
   - [3.1. Planlegging i Adobe](#31-planlegging-i-adobe)
   - [3.2. Bilder](#32-bilder)
@@ -70,17 +74,15 @@ npm start
 Dette vil starte utviklingsserveren og åpne appen i din standard nettleser. Hvis nettleseren ikke åpner automatisk, kan du manuelt navigere til **http://localhost:3000** for å vise appen.
 
 
-```js
+<!-- ```js
 const hello = "world";
 ```
 
 ```bash
 npm install
-```
+``` -->
 
-# 2. Bruk av appen
-
-## 2.1. Pokemon API
+## 1.4. Pokemon API
 
 ### Kontekst
 
@@ -108,6 +110,40 @@ Etter oppdatering vil https://crudcrud.com/ generere en ny unik API-nøkkel som 
 ### Hvor i koden API-nøkkelen implementeres
 
 Gå til `src/endpoints.js`. Her finnes det en variabel kalt `path`. Bytt ut den nåværende API-nøkkelen med den nye API-nøkkelen.
+
+# 2. Bruk av appen
+
+## Hjem
+
+På forsiden `home.page.jsx` kan brukeren velge mellom å gå til Alle Pokémon, Legg til Pokémon eller Mine Favoritter.
+
+## Alle Pokémon
+
+I `all.pokemon.page.jsx` får brukeren en oversikt over alle eksisterende pokémonkort. Her finnes allerede disse pokémon:
+
+* Charizard
+* Pikachu
+* Bulbasaur
+* Wartortle
+* Eevee
+* Butterfree
+
+Under Alle Pokémon, finnes Alle Trenere. Her ligger det to trenerkort:
+
+* Ash Ketchum
+* Gary Oak
+
+Brukeren har muligheten til å redigere hver pokémon og oppdatere noe av infoen om den, samt velge en av trenernes navn for å knytte trener og pokémon sammen. Da vil infoen bli oppdatert når brukeren trykker "Lagre", og pokémonen vil få den tilhørende trenerens ID i "Trener" feltet. Trenerkortet oppdateres med info om hvilke pokémon den eier (er knyttet opp mot) i "Pokémons" feltet. Brukeren kan også velge å slette de forskjellige pokémonkort og trenerkort. I tillegg er det en mulighet for å favorisere sine favoritt-pokémon. Disse vil da havne på Mine Favoritter-siden.
+
+Det er også en mulighet for å søke på pokémon etter navn i søkefeltet `searchbar.component.jsx` øverst på siden.
+
+## Legg til din Pokémon
+
+I `addPokemon.page.jsx` har brukeren mulighet for å legge til sin egen pokémon med navn, type og nivå. Det er ikke mulig å legge til en pokémon som allerede eksisterer. Når brukeren har fylt ut all nødvendig info (alle felter), vil pokémonen bli lagt til på Alle Pokémon-siden.
+
+## Mine Favoritter
+
+I `myFavorites.page.jsx` kan brukeren se en oversikt over alle sine favoritt-pokémon som den har favorisert. Her er det mulig å fjerne dem fra favoritter igjen også.
 
 # 3. Design
 
@@ -169,7 +205,7 @@ Index.js
     |     |-- TrainerCard.component.jsx
     |
     |-- AddPokemon.page.jsx
-    |     |-- SelectTrainer.component.jsx
+    |     |-- InputText.component.jsx
     |
     |-- MyFavorites.page.jsx
           |-- PokemonCard.component.jsx

@@ -10,13 +10,13 @@ export default function IconLink({ icon, text, size }) {
       return allPokemonIcon;
     } else if (icon === "addPokemon") return addPokemonIcon;
     else if (icon === "myFavorites") return myFavoritesIcon;
-  }
+  } 
 
   const iconSize = size || "90";
 
   return (
     <Link className="icons-container" to={`/${icon}`}>
-      {<img src={chooseIcon()} width={iconSize} alt={icon} />}
+      {<img className="icon" src={chooseIcon()} width={iconSize} alt={icon} />}
       <p>{text}</p>
     </Link>
   );

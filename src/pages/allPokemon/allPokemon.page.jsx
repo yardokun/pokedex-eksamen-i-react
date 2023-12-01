@@ -1,6 +1,5 @@
 import { useState, useEffect } from "react";
 import { useFavorites } from "../../hooks/useFavorites";
-import PageContainer from "../../components/pageContainer/pageContainer";
 import PokemonCard from "../../components/pokemonCard/pokemonCard.component";
 import Title from "../../components/title/title.component";
 import IconLink from "../../components/iconLink/iconLink.component";
@@ -195,40 +194,63 @@ export default function AllPokemon() {
         console.error("Error:", error);
       });
   };
+  const handleSavePokemonToTrainer = (updatedTrainer) => {
+    const { _id, ...updatedData } = updatedTrainer;
+
+    fetch(`${path}/trenere/${_id}`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(updatedData),
+    })
+      .then(() => {
+        setTrainerList(
+          trainerList.map((p) => (p._id === _id ? updatedTrainer : p))
+        );
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
 
   return (
-    <PageContainer>
-      <div className="main-container">
-        <Searchbar value={searchTerm} onChange={handleSearchChange} />
-        <Title title="Alle Pokémon" />
+    <div className="main-container">
+      <Searchbar value={searchTerm} onChange={handleSearchChange} />
+      <Title title="Alle Pokémon" />
+      <div className="pokemon-cards-container">
         {error && <p className="error-message">{error}</p>}
-        {(searchTerm ? filteredPokemonList : pokemonList).map((pokemon) => (
-          <PokemonEditHandler
-            key={pokemon._id}
-            pokemon={pokemon}
-            onSaveEdit={handleSaveEdit}
-          >
-            {(handleEdit) => (
-              <PokemonCard
-                key={pokemon._id}
-                icon={pokemon.navn}
-                name={pokemon.navn}
-                type={pokemon.type}
-                baseEvolution={pokemon.baseEvolusjon}
-                midEvolution={pokemon.midEvolusjon}
-                fullEvolution={pokemon.fullEvolusjon}
-                level={pokemon.nivå}
-                trainerId={pokemon.trenerId}
-                pokemon={pokemon}
-                favIcon={favorites[pokemon.navn] ? "faved" : "unfaved"}
-                onToggleFavorite={() => toggleFavorite(pokemon)}
-                onDelete={() => deletePokemon(pokemon._id, pokemon.navn)}
-                onEdit={handleEdit}
-              />
-            )}
-          </PokemonEditHandler>
-        ))}
-        <Title title="Alle Trenere" />
+        {(searchTerm ? filteredPokemonList : pokemonList).length > 0 ? (
+          (searchTerm ? filteredPokemonList : pokemonList).map((pokemon) => (
+            <PokemonEditHandler
+              key={pokemon._id}
+              pokemon={pokemon}
+              onSaveEdit={handleSaveEdit}
+            >
+              {(handleEdit) => (
+                <PokemonCard
+                  key={pokemon._id}
+                  icon={pokemon.navn}
+                  name={pokemon.navn}
+                  type={pokemon.type}
+                  baseEvolution={pokemon.baseEvolusjon}
+                  midEvolution={pokemon.midEvolusjon}
+                  fullEvolution={pokemon.fullEvolusjon}
+                  level={pokemon.nivå}
+                  trainerId={pokemon.trenerId}
+                  pokemon={pokemon}
+                  favIcon={favorites[pokemon.navn] ? "faved" : "unfaved"}
+                  onToggleFavorite={() => toggleFavorite(pokemon)}
+                  onDelete={() => deletePokemon(pokemon._id, pokemon.navn)}
+                  onEdit={handleEdit}
+                />
+              )}
+            </PokemonEditHandler>
+          ))
+        ) : (
+          <p className="no-data-message">Ingen pokémon funnet</p>
+        )}
+      </div>
+      <Title title="Alle Trenere" />
+      <div className="trainer-cards-container">
         {trainerList.length > 0 ? (
           trainerList.map((trainer) => (
             <TrainerCard
@@ -243,14 +265,14 @@ export default function AllPokemon() {
             />
           ))
         ) : (
-          <p>Ingen trenere funnet</p>
+          <p className="no-data-message">Ingen trenere funnet</p>
         )}
-        <div className="icon-links-container">
-          <IconLink icon="allPokemon" size="60" />
-          <IconLink icon="addPokemon" size="60" />
-          <IconLink icon="myFavorites" size="70" />
-        </div>
       </div>
-    </PageContainer>
+      <div className="icon-links-container">
+        <IconLink icon="allPokemon" size="60" />
+        <IconLink icon="addPokemon" size="60" />
+        <IconLink icon="myFavorites" size="70" />
+      </div>
+    </div>
   );
 }

@@ -1,6 +1,5 @@
 import IconLink from "../../components/iconLink/iconLink.component";
 import InputText from "../../components/inputText/inputText.component";
-import PageContainer from "../../components/pageContainer/pageContainer";
 import Title from "../../components/title/title.component";
 import { useState } from "react";
 import { path } from "../../routing/endpoints";
@@ -63,7 +62,6 @@ export default function AddPokemon() {
   };
 
   return (
-    <PageContainer>
       <div className="main-container">
         <Title title="Legg til din Pokémon" />
         <form onSubmit={handleSubmit}>
@@ -82,10 +80,6 @@ export default function AddPokemon() {
             value={nivå}
             onChange={(e) => setLevel(e.target.value)}
           />
-          {/* <SelectTrainer
-            value={trenerId}
-            onChange={(e) => setTrenerId(e.target.value)}
-          /> */}
           <button type="submit" className="add-pokemon-btn">
             Legg til
           </button>
@@ -102,6 +96,6 @@ export default function AddPokemon() {
           <IconLink icon="myFavorites" size="70" />
         </div>
       </div>
-    </PageContainer>
+
   );
 }

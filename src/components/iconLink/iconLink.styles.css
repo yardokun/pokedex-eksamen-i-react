@@ -4,5 +4,15 @@
   align-items: center;
   color: var(--color-primary);
   font-family: var(--font-primary);
-  margin-top: 2.188rem;
+  margin: 0 auto;
+}
+
+@media (min-width: 768px) {
+  .icons-container img {
+    width: 6.25rem;
+  }
+}
+
+.icon {
+  width: 4rem;
 }
