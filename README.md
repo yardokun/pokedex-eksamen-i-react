@@ -143,7 +143,7 @@ I `addPokemon.page.jsx` har brukeren mulighet for å legge til sin egen pokémon
 
 ## Mine Favoritter
 
-I `myFavorites.page.jsx` kan brukeren se en oversikt over alle sine favoritt-pokémon som den har favorisert. Her er det mulig å fjerne dem fra favoritter igjen også.
+I `myFavorites.page.jsx` kan brukeren se en oversikt over alle sine favoritt-pokémon som den har favorisert. Her er det også mulig å fjerne dem fra favoritter igjen.
 
 # 3. Design
 
