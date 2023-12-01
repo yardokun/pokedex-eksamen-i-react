@@ -118,8 +118,7 @@ export default function AllPokemon() {
       }
       setPokemonList(pokemons);
 
-      const trainersInitialized = localStorage.getItem("trainersInitialized");
-      if (trainers.length === 0 && !trainersInitialized) {
+      if (trainers.length === 0) {
         for (const trainer of initTrainers) {
           await fetch(`${path}/trenere`, {
             method: "POST",
@@ -127,7 +126,7 @@ export default function AllPokemon() {
             body: JSON.stringify(trainer),
           });
         }
-        localStorage.setItem("trainersInitialized", "true");
+
         trainers = await fetchTrainers();
       }
       setTrainerList(trainers);
@@ -158,6 +157,21 @@ export default function AllPokemon() {
           pokemonList.filter((pokemon) => pokemon._id !== pokemonId)
         );
         removeFavorite(pokemonName);
+      })
+      .catch((error) => {
+        console.error("Error:", error);
+      });
+  };
+  const deleteTrainer = (trainerId) => {
+    const url = `${path}/trenere/${trainerId}`;
+    fetch(url, { method: "DELETE" })
+      .then((response) => {
+        if (!response.ok) {
+          throw new Error(`HTTP error! Status: ${response.status}`);
+        }
+        setTrainerList(
+          trainerList.filter((trainer) => trainer._id !== trainerId)
+        );
       })
       .catch((error) => {
         console.error("Error:", error);
@@ -224,6 +238,8 @@ export default function AllPokemon() {
               age={trainer.alder}
               trainerLevel={trainer.trenernivå}
               pokemons={trainer.pokemons}
+              onDelete={() => deleteTrainer(trainer._id, trainer.navn)}
+              trainer={trainer}
             />
           ))
         ) : (

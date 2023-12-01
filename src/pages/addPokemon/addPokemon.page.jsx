@@ -1,9 +1,6 @@
-import { useContext } from "react";
-import { TrainersContext } from "../../contexts/trainersContext";
 import IconLink from "../../components/iconLink/iconLink.component";
 import InputText from "../../components/inputText/inputText.component";
 import PageContainer from "../../components/pageContainer/pageContainer";
-import SelectTrainer from "../../components/selectTrainer/selectTrainer.component";
 import Title from "../../components/title/title.component";
 import { useState } from "react";
 import { path } from "../../routing/endpoints";
@@ -16,12 +13,11 @@ export default function AddPokemon() {
   const [trenerId, setTrenerId] = useState("");
   const [isSubmitted, setIsSubmitted] = useState(false);
   const [error, setError] = useState("");
-  const { trainers } = useContext(TrainersContext);
 
   const handleSubmit = async (event) => {
     event.preventDefault();
 
-    if (!navn || !type || !nivå || !trenerId) {
+    if (!navn || !type || !nivå) {
       alert("Du må fylle inn all informasjonen om din Pokémon først!");
       return;
     }
@@ -53,31 +49,6 @@ export default function AddPokemon() {
         throw new Error(`HTTP error! Status: ${response.status}`);
       }
 
-      const newPokemon = await response.json();
-
-      // Oppdater treneren med den nye Pokémonen
-      const selectedTrainer = trainers.find(
-        (trainer) => trainer._id === trenerId
-      );
-      if (selectedTrainer) {
-        let updatedTrainerPokemons = selectedTrainer.pokemons
-          ? [...selectedTrainer.pokemons, newPokemon._id]
-          : [newPokemon._id];
-        const updatedTrainer = {
-          ...selectedTrainer,
-          pokemons: updatedTrainerPokemons,
-        };
-        console.log("Updated Trainer Data:", updatedTrainer);
-        response = await fetch(`${path}/trenere/${trenerId}`, {
-          method: "PUT",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify(updatedTrainer),
-        });
-
-        if (!response.ok) {
-          throw new Error(`HTTP error! Status: ${response.status}`);
-        }
-      }
 
       setIsSubmitted(true);
       setName("");
@@ -111,10 +82,10 @@ export default function AddPokemon() {
             value={nivå}
             onChange={(e) => setLevel(e.target.value)}
           />
-          <SelectTrainer
+          {/* <SelectTrainer
             value={trenerId}
             onChange={(e) => setTrenerId(e.target.value)}
-          />
+          /> */}
           <button type="submit" className="add-pokemon-btn">
             Legg til
           </button>

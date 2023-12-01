@@ -75,7 +75,7 @@ export default function PokemonCard({
             <p className="text">Base Evolusjon: {baseEvolution}</p>
             <p className="text">Mid Evolusjon: {midEvolution}</p>
             <p className="text">Full Evolusjon: {fullEvolution}</p>
-            {trainerId && <p className="text">Trener ID: {trainerId}</p>}
+            {trainerId && <p className="text">Trener: {trainerId}</p>}
           </div>
           <div className="card-actions">
             <button onClick={() => onEdit(pokemon)}>Rediger</button>

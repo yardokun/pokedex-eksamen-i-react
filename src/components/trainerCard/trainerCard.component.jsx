@@ -3,7 +3,14 @@ import ashIcon from "../../assets/graphics/ash-ketchum.png";
 import garyIcon from "../../assets/graphics/gary-oak.png";
 import placeholderIcon from "../../assets/graphics/pokemonPlaceholder.png";
 
-export default function TrainerCard({ name, age, trainerLevel, pokemons }) {
+export default function TrainerCard({
+  name,
+  age,
+  trainerLevel,
+  pokemons,
+  onDelete,
+  trainer,
+}) {
   function chooseTrainerIcon() {
     if (name === "Ash Ketchum") {
       return ashIcon;
@@ -20,6 +27,10 @@ export default function TrainerCard({ name, age, trainerLevel, pokemons }) {
     return "90";
   }
 
+  const handleDelete = () => {
+    onDelete(trainer._id);
+  };
+  
   return (
     <div className="trainer-card-container">
       <div className="card-background">
@@ -30,6 +41,9 @@ export default function TrainerCard({ name, age, trainerLevel, pokemons }) {
             <p className="text">Alder: {age}</p>
             <p className="text">Trenernivå: {trainerLevel}</p>
             <p className="text">Pokémons: {pokemons.join(", ")}</p>
+            <div className="card-actions">
+              <button onClick={handleDelete}>Slett</button>
+            </div>
           </div>
         </div>
       </div>

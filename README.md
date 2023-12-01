@@ -10,11 +10,12 @@ Les første punkt, **"Installasjon"**, for å komme i gang med appen.
   - [1.1. Forutsetninger](#11-forutsetninger)
   - [1.2. Oppsett](#12-oppsett)
   - [1.3. Kjøre appen](#13-kjøre-appen)
-- [2. Design](#2-design)
-  - [2.1. Planlegging i Adobe](#21-planlegging-i-adobe)
-  - [2.2. Bilder](#22-bilder)
-- [3. Appens arkitektur](#3-appens-arkitektur)
-- [4. Notater til meg selv](#4-notater-til-meg-selv)
+- [2. Bruk av appen](#2-bruk-av-appen)
+- [3. Design](#3-design)
+  - [3.1. Planlegging i Adobe](#31-planlegging-i-adobe)
+  - [3.2. Bilder](#32-bilder)
+- [4. Appens arkitektur](#4-appens-arkitektur)
+- [5. Notater til meg selv](#5-notater-til-meg-selv)
 
 
 # 1. Installasjon
@@ -73,9 +74,13 @@ const hello = "world";
 npm install
 ```
 
-# 2. Design
+# 2. Bruk av appen
 
-## 2.1. Planlegging i Adobe
+
+
+# 3. Design
+
+## 3.1. Planlegging i Adobe
 
 Jeg startet med å lage et raskt design av hele appen i Adobe, for å kunne se hvordan jeg ville at den skulle se ut, samt kunne planlegge de ulike funksjonene og React-komponentene.
 
@@ -83,7 +88,7 @@ Etterhvert som jeg jobbet med prosjektet, innså jeg at jeg måtte gjøre noen e
 
 [Link til designet i Adobe.](https://xd.adobe.com/view/9edc2693-e55b-4095-9610-b42570c19924-cb8f/)
 
-## 2.2. Bilder
+## 3.2. Bilder
 
 Alle bilder av de forskjellige pokémon er hentet fra https://www.pokemon.com/us/pokedex.
 
@@ -105,7 +110,7 @@ Navigasjons-ikonene er laget med [DALL-E](https://openai.com/dall-e-3).
 
 <img src="src/assets/graphics/pokemonball.png" width="150"> <img src="src/assets/graphics/pokemonPencil.png" width="150"> <img src="src/assets/graphics/pokemonFavorite.png" width="150">
 
-# 3. Appens arkitektur
+# 4. Appens arkitektur
 
 Appen har en hierarkisk struktur som starter med `index.js` på toppen, som rendrer `App.jsx`-komponenten.
 
@@ -139,7 +144,7 @@ Index.js
           |-- PokemonCard.component.jsx
 ```
 
-# 4. Notater til meg selv
+# 5. Notater til meg selv
 
 Kom med forslag til pokémon info som kan legges inn
 
@@ -157,3 +162,12 @@ Når man lagrer pokemon => PUT pokemon og trener
 
 Gå inn på trener => Ser hvilke pokemon den trener har
 (Ny side)
+
+
+Kopier PUT fra pokemon til trenere
+
+GET trenere for å få ny data i trenerkortet
+
+DELETE trenere/id
+
+Fjerne alle "feil" i terminal
