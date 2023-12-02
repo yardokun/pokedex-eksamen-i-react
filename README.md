@@ -24,6 +24,7 @@ Les første punkt, **"Installasjon"**, for å komme i gang med appen.
   - [3.2. Bilder](#32-bilder)
 - [4. Appens arkitektur](#4-appens-arkitektur)
   - [React.StrictMode](#reactstrictmode)
+- [5. Notater til meg selv](#5-notater-til-meg-selv)
 
 
 # 1. Installasjon
@@ -216,3 +217,31 @@ Index.js
 I `index.js` har jeg kommentert ut *React.StrictMode*, siden jeg opplevde at denne ga meg duplikater av alle pokémonkort på siden om jeg hadde den aktivert. Men den er bra å bruke i utviklermodus, siden StrictMode er et verktøy for å fremheve potensielle problemer i en applikasjon. Når StrictMode er aktivert, kompilerer React en liste over alle klassekomponenter som bruker de usikre livssyklusene, og logger en advarselsmelding med informasjon om disse komponentene. [Kilde.](https://legacy.reactjs.org/docs/strict-mode.html)
 
 Jeg ble dessverre nødt til å deaktivere den får å få appikasjonen til å kjøre som den skal.
+
+# 5. Notater til meg selv
+
+Kom med forslag til pokémon info som kan legges inn
+
+
+Vise pokemonkort på allPokemon.
+Kjør listen én gang. Hvis den allerede er kjørt, ikke POST igjen, bruk GET.
+
+Vise trenere på allPokemon.
+Hardkode trenere. Gjør samme som på pokemon kort.
+
+Hent alle trenere i "Velg trener" og velg hvilken trener til hvilken pokemon.
+GET trenere jeg har laget, og vis navn i listen.
+
+Når man lagrer pokemon => PUT pokemon og trener
+
+Gå inn på trener => Ser hvilke pokemon den trener har
+(Ny side)
+
+
+Kopier PUT fra pokemon til trenere
+
+GET trenere for å få ny data i trenerkortet
+
+DELETE trenere/id
+
+Fjerne alle "feil" i terminal
