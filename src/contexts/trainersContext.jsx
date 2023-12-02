@@ -23,7 +23,7 @@ export const TrainersProvider = ({ children }) => {
 
       for (const trainer of trainersToCreate) {
         try {
-          await fetch(`${path}/trainers`, {
+          await fetch(`${path}/trenere`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
             body: JSON.stringify(trainer),

@@ -24,7 +24,7 @@ Les første punkt, **"Installasjon"**, for å komme i gang med appen.
   - [3.2. Bilder](#32-bilder)
 - [4. Appens arkitektur](#4-appens-arkitektur)
   - [React.StrictMode](#reactstrictmode)
-- [5. Notater til meg selv](#5-notater-til-meg-selv)
+- [5. Notat](#5-notat)
 
 
 # 1. Installasjon
@@ -218,30 +218,6 @@ I `index.js` har jeg kommentert ut *React.StrictMode*, siden jeg opplevde at den
 
 Jeg ble dessverre nødt til å deaktivere den får å få appikasjonen til å kjøre som den skal.
 
-# 5. Notater til meg selv
+# 5. Notat
 
-Kom med forslag til pokémon info som kan legges inn
-
-
-Vise pokemonkort på allPokemon.
-Kjør listen én gang. Hvis den allerede er kjørt, ikke POST igjen, bruk GET.
-
-Vise trenere på allPokemon.
-Hardkode trenere. Gjør samme som på pokemon kort.
-
-Hent alle trenere i "Velg trener" og velg hvilken trener til hvilken pokemon.
-GET trenere jeg har laget, og vis navn i listen.
-
-Når man lagrer pokemon => PUT pokemon og trener
-
-Gå inn på trener => Ser hvilke pokemon den trener har
-(Ny side)
-
-
-Kopier PUT fra pokemon til trenere
-
-GET trenere for å få ny data i trenerkortet
-
-DELETE trenere/id
-
-Fjerne alle "feil" i terminal
+På slutten av arbeidet med prosjektet klarte jeg å kludre til alt, så nå fungerer ikke ting som de skal. Trenerkortene kjøres for eksempel ut for mange ganger, og jeg er klar over dette. Har ikke nok tid til å fikse det.

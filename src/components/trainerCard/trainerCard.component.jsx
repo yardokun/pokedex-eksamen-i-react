@@ -30,7 +30,7 @@ export default function TrainerCard({
   const handleDelete = () => {
     onDelete(trainer._id);
   };
-  
+
   return (
     <div className="trainer-card-container">
       <div className="card-background">
@@ -40,7 +40,9 @@ export default function TrainerCard({
             <p className="text">Navn: {name}</p>
             <p className="text">Alder: {age}</p>
             <p className="text">Trenernivå: {trainerLevel}</p>
-            <p className="text">Pokémons: {pokemons.join(", ")}</p>
+            <p className="text">
+              Pokémons: {pokemons ? pokemons.join(", ") : "Ingen"}
+            </p>
             <div className="card-actions">
               <button onClick={handleDelete}>Slett</button>
             </div>
