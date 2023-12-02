@@ -26,7 +26,6 @@ export default function AddPokemon() {
       let response = await fetch(url);
       let existingPokemons = await response.json();
 
-      // Sjekk om Pokémonen allerede eksisterer
       const existingPokemon = existingPokemons.find(
         (pokemon) => pokemon.navn.toLowerCase() === navn.toLowerCase()
       );
@@ -35,8 +34,6 @@ export default function AddPokemon() {
         alert("Denne Pokémonen eksisterer allerede!");
         return;
       }
-
-      // Opprett en ny Pokémon
       const newPokemonData = { navn, type, nivå, trener: trenerId };
       response = await fetch(url, {
         method: "POST",
