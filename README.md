@@ -220,4 +220,4 @@ Jeg ble dessverre nødt til å deaktivere den får å få appikasjonen til å kj
 
 # 5. Notat
 
-På slutten av arbeidet med prosjektet klarte jeg å kludre til alt, så nå fungerer ikke ting som de skal. Trenerkortene kjøres for eksempel ut for mange ganger, og jeg er klar over dette. Har ikke nok tid til å fikse det.
+På slutten av arbeidet med prosjektet klarte jeg å kludre til alt, så nå fungerer ikke ting som det skal. Trenerkortene kjøres for eksempel ut for mange ganger, og jeg er klar over dette. Har ikke nok tid til å fikse det.
